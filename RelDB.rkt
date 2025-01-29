@@ -106,14 +106,14 @@
   (let ([rem (to-remove (table-schema tab) cols '() 0 '())])
     (table (cdr rem) (it-proj (car rem) (table-rows tab) '()))))
 
-;Cartesian join
+;Cross join
 (define (table-cross-join tab1 tab2)
   ;Procedure that connects one row to the others
   (define (cross-join-row row rows acc)
     (if (null? rows)
         acc
         (cross-join-row row (cdr rows) (cons (append row (car rows)) acc))))
-  ;Procedure to perform a Cartesian join
+  ;Procedure to perform a cross join
   (define (join rows1 rows2 acc)
     (if (null? rows1)
         acc
